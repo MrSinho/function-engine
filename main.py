@@ -16,7 +16,7 @@ from kivymd.uix.button import MDRectangleFlatButton, MDIconButton, MDFloatingAct
 
 from kivymd.uix.textfield import MDTextField, MDTextFieldRect, MDTextFieldRound
 from kivy.lang import Builder
-from kivy_stuff import algorithm_helper, variable_helper, point_x_helper, point_y_helper, point_z_helper, start_helper, edges_checkbox, points_checkbox
+from kivy_ import algorithm_helper, variable_helper, point_x_helper, point_y_helper, point_z_helper, start_helper, edges_checkbox, points_checkbox
 from kivymd.uix.list import MDList, OneLineListItem, TwoLineListItem
 from kivymd.uix.list import ThreeLineListItem, ThreeLineIconListItem, IconLeftWidget
 from kivy.uix.scrollview import ScrollView
