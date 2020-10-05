@@ -1,57 +1,59 @@
-start_helper = """
+start_helper = '''
 MDTextFieldRect:
-    hint_text: "func Start"
+    text : str(app.file_start)
+    hint_text: "Start"
     helper_text: "for some examples: www.sinhographics.com"
     helper_text_mode: "on_focus"
     icon_right: "language-python"
     icon_right_color: app.theme_cls.primary_color
-    pos_hint: {"center_x": 0.30, "center_y":0.765}
+    pos_hint: {"center_x": 0.30, "center_y":0.765-.1}
     size_hint_x: .55
     size_hint_y: .22
     width: 300    
-    """
+    '''
 
-algorithm_helper = """
+algorithm_helper = '''
 MDTextFieldRect:
-    hint_text: "func Update"
+    text : str(app.file_eq)
+    hint_text: "Update is called once per frame"
     helper_text: "for some examples: www.sinhographics.com"
     helper_text_mode: "on_focus"
     icon_right: "language-python"
     icon_right_color: app.theme_cls.primary_color
-    pos_hint: {"center_x": 0.30, "center_y":0.535}
+    pos_hint: {"center_x": 0.30, "center_y":0.535-.1}
     size_hint_x: .55
     size_hint_y: .22
     width: 300
-    """
+    '''
 
-variable_helper = """
+variable_helper = '''
 MDTextField:
     #hint_text: "Give a name"
     #helper_text: "rename the variable"
     helper_text_mode: "on_focus"
     #icon_right: "language-python"
     #icon_right_color: app.theme_cls.primary_color
-    pos_hint: {"center_x": .9, "center_y":0.65}
+    pos_hint: {"center_x": .9, "center_y":0.65-.1}
     size_hint_x: 0.13
     width: 50   
-    """
+    '''
 
-point_x_helper = """
+point_x_helper = '''
 MDTextField:
     hint_text: ""
     icon_right: "axis-x-arrow"
     icon_right_color: app.theme_cls.primary_color
-    pos_hint: {"center_x": .35, "center_y":0.31}
+    pos_hint: {"center_x": .35, "center_y":0.31-.1}
     size_hint_x: 0.08
     width: 300
-"""
+'''
 
 point_y_helper = '''
 MDTextField:
     hint_text: ""
     icon_right: "axis-y-arrow"
     icon_right_color: app.theme_cls.primary_color
-    pos_hint: {"center_x": 0.45, "center_y":0.31}
+    pos_hint: {"center_x": 0.45, "center_y":0.31-.1}
     size_hint_x: 0.08
     width: 300
 '''
@@ -60,7 +62,7 @@ MDTextField:
     hint_text: ""
     icon_right: "axis-z-arrow"
     icon_right_color: app.theme_cls.primary_color
-    pos_hint: {"center_x": 0.55, "center_y":0.31}
+    pos_hint: {"center_x": 0.55, "center_y":0.31-.1}
     size_hint_x: 0.08
     width: 300
 '''
@@ -72,7 +74,7 @@ MDCheckbox:
     active: app.edges
     on_active:
         app.draw_edges()
-    pos_hint: {"center_x": 0.2, "center_y":0.31}
+    pos_hint: {"center_x": 0.2, "center_y":0.31-.1}
 
 '''
 
@@ -83,5 +85,23 @@ MDCheckbox:
     active: app.points
     on_active:
         app.draw_points()
-    pos_hint: {"center_x": 0.25, "center_y":0.31}
+    pos_hint: {"center_x": 0.25, "center_y":0.31-.1}
 '''
+
+toolbar = '''
+Screen:
+    BoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            title: 'Demo Application'
+            left_action_items: [["content-save-all", lambda x: app.save()], ["folder", lambda x: app.load()], ["application-import", lambda x: app.imports()]]
+            elevation:5
+'''
+
+#toolbar = '''
+#
+#MDToolbar:
+#    title: ''
+#    left_action_items: [["content-save-all", lambda x: app.save()], ["folder", lambda x: app.load()], ["application-import", lambda x: app.imports()]]
+#    pos_hint_y: 0.9
+#'''
