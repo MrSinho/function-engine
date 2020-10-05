@@ -16,7 +16,7 @@ from kivymd.uix.button import MDRectangleFlatButton, MDIconButton, MDFloatingAct
 
 from kivymd.uix.textfield import MDTextField, MDTextFieldRect, MDTextFieldRound
 from kivy.lang import Builder
-from kivy_ import algorithm_helper, variable_helper, point_x_helper, point_y_helper, point_z_helper, start_helper, edges_checkbox, points_checkbox
+from kivy_ import *
 from kivymd.uix.list import MDList, OneLineListItem, TwoLineListItem
 from kivymd.uix.list import ThreeLineListItem, ThreeLineIconListItem, IconLeftWidget
 from kivy.uix.scrollview import ScrollView
@@ -114,43 +114,46 @@ if __name__ == "__main__":
         try: 
             self.variable = self.variable_builder.text.split()
             print(self.variable)
-            try: 
-                float(self.variable[-1])
-                print("can convert to float")
+            try: float(self.variable[-1])
             except Exception: 
                 print("Invalid sintax!!")
                 self.update_all_widgets()
                 return
             if(self.variable[0].isalpha() and self.variable[1].isalpha()): #(self.variable[-1].isalpha() or self.variable[-1].isdigit())):
                 self.variables_list.append(self.variable_builder.text)
+                print(self.variables_list)
                 self.types_list.append(self.variable[0])
                 print(self.types_list)
                 self.names_list.append(self.variable[1])
                 self.values_list.append(self.variable[-1])
-                i = 0
-                var_lines = [] 
-                for _ in self.variables_list:
-                    var_line = "("+'"'+str(self.names_list[i])+'"'+", "+'"'+str(self.types_list[i])+'"'+", "+'"'+str(self.values_list[i])+'"'+")"
-                    if i < (len(var_lines)-1): var_line+","
-                    var_lines.append(var_line)
-                    i += 1
-                var_lines = (str(var_lines)).replace("'", "").replace("[", "").replace("]", "")
-                print(var_lines)
-                self.dinamic_table = 'self.var_table = MDDataTable(check = True, pos_hint={"center_x":0.7, "center_y":0.65}, rows_num = 20, size_hint=(0.2,0.5), column_data=[("Name", dp(30)), ("Type", dp(15)),("Value", dp(15))], row_data=['+var_lines+'])'
-                print(self.dinamic_table)
-                exec(self.dinamic_table)
-                self.var_table.bind(on_check_press = self.add_check_press)
-                self.call = f"Simulation({str([str(value) for value in self.values_list])}, {str(self.how)}).animation()".replace("[", "").replace("]", "").replace("'", "")
-                self._class = f"self, {str([str(name) for name in self.names_list])}, how".replace("[", "").replace("]", "").replace("'", "")        
-                print(self.call)
-                print(self._class)
-                self.update_all_widgets()
+                self.update_variables()
             else: 
                 print("Invalid sintax!!")
                 self.update_all_widgets()
                 return
         except Exception: traceback.print_exc()
 
+    def update_variables(self):
+        i = 0
+        var_lines = [] 
+        for _ in self.variables_list:
+            var_line = "("+'"'+str(self.names_list[i])+'"'+", "+'"'+str(self.types_list[i])+'"'+", "+'"'+str(self.values_list[i])+'"'+")"
+            if i < (len(var_lines)-1): var_line+","
+            var_lines.append(var_line)
+            i += 1
+        var_lines = (str(var_lines)).replace("'", "").replace("[", "").replace("]", "")
+        print(var_lines)
+        self.dinamic_table = 'self.var_table = MDDataTable(check = True, pos_hint={"center_x":0.7, "center_y":0.55}, rows_num = 20, size_hint=(0.2,0.5), column_data=[("Name", dp(30)), ("Type", dp(15)),("Value", dp(15))], row_data=['+var_lines+'])'
+        #print(self.dinamic_table)
+        self.screen.remove_widget(self.var_table)
+        exec(self.dinamic_table)
+        self.var_table.bind(on_check_press = self.add_check_press)
+        self.call = f"Simulation({str([str(value) for value in self.values_list])}, {str(self.how)}).animation()".replace("[", "").replace("]", "").replace("'", "")
+        self._class = f"self, {str([str(name) for name in self.names_list])}, how".replace("[", "").replace("]", "").replace("'", "")      
+        print("variable has been loaded successfully!")  
+        print(self.call)
+        print(self._class)
+        self.update_all_widgets()
 
     def update_all_widgets(self):
         self.screen.remove_widget(self.algorithm_builder)
@@ -161,6 +164,7 @@ if __name__ == "__main__":
         self.screen.remove_widget(self.points_x_builder)
         self.screen.remove_widget(self.points_y_builder)
         self.screen.remove_widget(self.points_z_builder)
+        self.screen.remove_widget(self.var_table)
 
         self.screen.add_widget(self.var_table)
         self.screen.add_widget(self.algorithm_builder)
@@ -176,7 +180,7 @@ if __name__ == "__main__":
     def add_variable(self, obj):
         if self.can_add_var:
             self.variable_builder = Builder.load_string(variable_helper)
-            self.confirm_button = MDRectangleFlatButton(text = "Add", pos_hint={"center_x":0.9,"center_y":0.57},
+            self.confirm_button = MDRectangleFlatButton(text = "Add", pos_hint={"center_x":0.9,"center_y":0.47},
                                                    on_release=self.confirm_variable)
             self.can_add_var = False
             self.screen.add_widget(self.variable_builder)
@@ -212,12 +216,75 @@ if __name__ == "__main__":
         self.update_checkbox()
 
     def update_checkbox(self):
+        self.screen.remove_widget(self.toolbar)
         self.screen.remove_widget(self.edges_checkbox_builder)
         self.screen.remove_widget(self.points_checkbox_builder)
         self.edges_checkbox_builder = Builder.load_string(edges_checkbox)
         self.points_checkbox_builder = Builder.load_string(points_checkbox)
         self.screen.add_widget(self.edges_checkbox_builder)
         self.screen.add_widget(self.points_checkbox_builder)
+        self.screen.add_widget(self.toolbar)
+
+    def save(self):
+        try:
+            saved_start = open("Saved/start.start", "w")
+            saved_start.write(self.start_builder.text)
+            saved_start.flush()
+            saved_start.close()
+
+            saved_eq = open("Saved/equation.alg", "w")
+            saved_eq.write(self.algorithm_builder.text)
+            saved_eq.flush()
+            saved_eq.close()
+
+            saved_variables = open("Saved/variables.var", "w")
+            saved_variables.write(str(self.variables_list))
+            saved_variables.flush()
+            saved_variables.close()
+
+            print("File has been saved successfully")
+        except Exception: 
+            traceback.print_exc()
+            print("could not save")
+
+    def load(self):
+        try:
+            self.file_start = open("Saved/start.start", "r").read()
+            self.screen.remove_widget(self.start_builder)
+            self.start_builder = Builder.load_string(start_helper)
+            self.screen.add_widget(self.start_builder)
+        except Exception: 
+            traceback.print_exc()
+            print("could not load Start function")
+
+        try:
+            self.file_eq  = open("Saved/equation.alg", "r" ).read()
+            self.screen.remove_widget(self.algorithm_builder)   
+            self.algorithm_builder = Builder.load_string(algorithm_helper)
+            self.screen.add_widget(self.algorithm_builder)
+            print(self.file_eq)
+        except Exception: 
+            traceback.print_exc()
+            print("could not load Update function")
+
+        try:
+            self.file_var = open("Saved/variables.var", "r").read()
+            self.variables_list = list(ast.literal_eval(self.file_var)) #convert string of list to a list
+            print(type(self.variables_list))
+            print(self.variables_list)
+            for i in self.variables_list:
+                i =i.split()
+                print(i)
+                self.types_list.append(i[0])
+                self.names_list.append(i[1])
+                self.values_list.append(i[-1])
+            self.update_variables()
+        except Exception: 
+            traceback.print_exc()
+            print("could not load variables")
+
+    def imports(self):
+        print("import settings")
 
     def build(self):
         self.how = "2"
@@ -226,6 +293,8 @@ if __name__ == "__main__":
         self.can_remv_var = False
         self.edges = True
         self.points = False
+        self.file_eq = ""
+        self.file_start = ""
 
         Window.size=(1400, 700)
         self.title = "Algorithm Engine"
@@ -241,17 +310,25 @@ if __name__ == "__main__":
 
         self.screen = Screen()
 
-        self.run_button = MDRectangleFlatButton(text = "Run", 
-                                       pos_hint={"center_x": 0.086, "center_y": 0.317},
-                                       on_release = self.call_exec_algorithm)
+        self.toolbar = Builder.load_string(toolbar)
 
-        self.add_var_button = MDIconButton(icon = "plus", pos_hint={"center_x":0.882, "center_y": 0.71},
+        self.run_button = MDRectangleFlatButton(text = "Run", 
+                                       pos_hint={"center_x": 0.086, "center_y": 0.217},
+                                       on_release = self.call_exec_algorithm)
+        #self.save_button = MDRectangleFlatButton(text = "Save", 
+        #                               pos_hint={"center_x": 0.086, "center_y": 0.317},
+        #                               on_release = self.call_exec_algorithm)
+        #self.load_button = MDRectangleFlatButton(text = "Load", 
+        #                               pos_hint={"center_x": 0.086, "center_y": 0.317},
+        #                               on_release = self.call_exec_algorithm)
+
+        self.add_var_button = MDIconButton(icon = "plus", pos_hint={"center_x":0.882, "center_y": 0.61},
                                       on_release = self.add_variable)
 
-        self.remv_var_button = MDIconButton(icon = "minus", pos_hint={"center_x":0.912, "center_y":0.71}) 
+        self.remv_var_button = MDIconButton(icon = "minus", pos_hint={"center_x":0.912, "center_y":0.61}) 
             
         self.var_table = MDDataTable(check = True,
-                                pos_hint={"center_x":0.7, "center_y":0.55+.1},
+                                pos_hint={"center_x":0.7, "center_y":0.55},
                                 rows_num = 20,
                                 size_hint=(.2,0.5),
                                 column_data=[
@@ -283,6 +360,14 @@ if __name__ == "__main__":
         self.screen.add_widget(self.points_checkbox_builder)
         #run_button
         self.screen.add_widget(self.run_button)
+        #toolbar
+        self.screen.add_widget(self.toolbar)
+        #save button
+        #self.screen.add_widget(self.save_button)
+        ##load button
+        #self.screen.add_widget(self.load_button)
+        ##imports button
+
         #plus_button
         self.screen.add_widget(self.add_var_button)
         #minus_button
@@ -298,5 +383,3 @@ if __name__ == "__main__":
 if __name__ == "__main__":
     app = App()
     app.run()
-        
-
