@@ -5,7 +5,7 @@ MDTextFieldRect:
     helper_text_mode: "on_focus"
     icon_right: "language-python"
     icon_right_color: app.theme_cls.primary_color
-    pos_hint: {"center_x": 0.30, "center_y":0.665+.1}
+    pos_hint: {"center_x": 0.30, "center_y":0.765}
     size_hint_x: .55
     size_hint_y: .22
     width: 300    
@@ -18,7 +18,7 @@ MDTextFieldRect:
     helper_text_mode: "on_focus"
     icon_right: "language-python"
     icon_right_color: app.theme_cls.primary_color
-    pos_hint: {"center_x": 0.30, "center_y":0.435+.1}
+    pos_hint: {"center_x": 0.30, "center_y":0.535}
     size_hint_x: .55
     size_hint_y: .22
     width: 300
@@ -31,8 +31,8 @@ MDTextField:
     helper_text_mode: "on_focus"
     #icon_right: "language-python"
     #icon_right_color: app.theme_cls.primary_color
-    pos_hint: {"center_x": .93, "center_y":0.5+.2-.05}
-    size_hint_x: 0.04
+    pos_hint: {"center_x": .9, "center_y":0.65}
+    size_hint_x: 0.13
     width: 50   
     """
 
@@ -41,7 +41,7 @@ MDTextField:
     hint_text: ""
     icon_right: "axis-x-arrow"
     icon_right_color: app.theme_cls.primary_color
-    pos_hint: {"center_x": .35, "center_y":0.21+.1}
+    pos_hint: {"center_x": .35, "center_y":0.31}
     size_hint_x: 0.08
     width: 300
 """
@@ -51,7 +51,7 @@ MDTextField:
     hint_text: ""
     icon_right: "axis-y-arrow"
     icon_right_color: app.theme_cls.primary_color
-    pos_hint: {"center_x": 0.45, "center_y":0.21+.1}
+    pos_hint: {"center_x": 0.45, "center_y":0.31}
     size_hint_x: 0.08
     width: 300
 '''
@@ -60,7 +60,28 @@ MDTextField:
     hint_text: ""
     icon_right: "axis-z-arrow"
     icon_right_color: app.theme_cls.primary_color
-    pos_hint: {"center_x": 0.55, "center_y":0.21+.1}
+    pos_hint: {"center_x": 0.55, "center_y":0.31}
     size_hint_x: 0.08
     width: 300
+'''
+
+edges_checkbox = '''
+MDCheckbox:
+    size_hint: None, None
+    size: dp(40), dp(40)
+    active: app.edges
+    on_active:
+        app.draw_edges()
+    pos_hint: {"center_x": 0.2, "center_y":0.31}
+
+'''
+
+points_checkbox = '''
+MDCheckbox:
+    size_hint: None, None
+    size: dp(40), dp(40)
+    active: app.points
+    on_active:
+        app.draw_points()
+    pos_hint: {"center_x": 0.25, "center_y":0.31}
 '''
