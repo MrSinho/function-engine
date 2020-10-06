@@ -7,6 +7,7 @@ import re
 import ast
 import concurrent.futures
 import traceback
+import os
 
 from kivymd.app import MDApp
 from kivy.core.window import Window
@@ -24,6 +25,7 @@ from kivymd.uix.datatables import MDDataTable
 from kivy.metrics import dp
 from kivymd.uix.menu import MDDropdownMenu
 from kivy.clock import Clock
+from kivymd.uix.dialog import MDDialog
 
 class App(MDApp): 
     def call_exec_algorithm(self,obj):
@@ -98,6 +100,7 @@ if __name__ == "__main__":
             print(self.entire_class)
             #Clock.schedule_interval(self.execute_class, 0.1)
             exec(self.entire_class)
+            App().stop()
             App().run()
         except Exception: traceback.print_exc()
         #exec(self.entire_class)
@@ -225,31 +228,65 @@ if __name__ == "__main__":
         self.screen.add_widget(self.points_checkbox_builder)
         self.screen.add_widget(self.toolbar)
 
-    def save(self):
+    def save(self, obj):
         try:
-            saved_start = open("Saved/start.start", "w")
+            os.makedirs(f"Saved/{self.directory_builder.text}")
+
+            saved_start = open(f"Saved/{self.directory_builder.text}/start.start", "w")
             saved_start.write(self.start_builder.text)
             saved_start.flush()
             saved_start.close()
 
-            saved_eq = open("Saved/equation.alg", "w")
+            saved_eq = open(f"Saved/{self.directory_builder.text}/equation.alg", "w")
             saved_eq.write(self.algorithm_builder.text)
             saved_eq.flush()
             saved_eq.close()
 
-            saved_variables = open("Saved/variables.var", "w")
+            saved_variables = open(f"Saved/{self.directory_builder.text}/variables.var", "w")
             saved_variables.write(str(self.variables_list))
             saved_variables.flush()
             saved_variables.close()
 
             print("File has been saved successfully")
+            self.save_dialog.dismiss()
         except Exception: 
             traceback.print_exc()
             print("could not save")
+        
+        
+        
+    def close_save_popup(self, obj):
+        self.save_dialog.dismiss()
+    def close_load_popup(self, obj):
+        self.load_dialog.dismiss()
 
-    def load(self):
+    def save_popup(self):
+        self.directory_builder = Builder.load_string(directory_helper)
+        cancel_button = MDRectangleFlatButton(text = "Cancel", on_release = self.close_save_popup)
+        save_button = MDRectangleFlatButton(text = "Save", on_release = self.save)
+        
+        self.save_dialog = MDDialog(title = "Save file as", 
+                                    size_hint = (0.6, 1), type = "custom", 
+                                    content_cls = self.directory_builder,
+                                    buttons = [cancel_button, save_button])
+        #self.screen.add_widget(self.save_helper)
+        self.save_dialog.open()
+    
+    def load_popup(self):
+        self.directory_builder = Builder.load_string(directory_helper)
+        cancel_button = MDRectangleFlatButton(text = "Cancel", on_release = self.close_load_popup)
+        load_button = MDRectangleFlatButton(text = "Load", on_release = self.load)
+        
+        self.load_dialog = MDDialog(title = "Load file", 
+                                    size_hint = (0.6, 1), type = "custom", 
+                                    content_cls = self.directory_builder,
+                                    buttons = [cancel_button, load_button])
+        #self.screen.add_widget(self.save_helper)
+        self.load_dialog.open()
+
+    def load(self, obj):
         try:
-            self.file_start = open("Saved/start.start", "r").read()
+            self.file_start = open(f"Saved/{self.directory_builder.text}/start.start", "r").read()
             self.screen.remove_widget(self.start_builder)
             self.start_builder = Builder.load_string(start_helper)
             self.screen.add_widget(self.start_builder)
@@ -258,7 +295,7 @@ if __name__ == "__main__":
             print("could not load Start function")
 
         try:
-            self.file_eq  = open("Saved/equation.alg", "r" ).read()
+            self.file_eq  = open(f"Saved/{self.directory_builder.text}/equation.alg", "r" ).read()
             self.screen.remove_widget(self.algorithm_builder)   
             self.algorithm_builder = Builder.load_string(algorithm_helper)
             self.screen.add_widget(self.algorithm_builder)
@@ -268,7 +305,7 @@ if __name__ == "__main__":
             print("could not load Update function")
 
         try:
-            self.file_var = open("Saved/variables.var", "r").read()
+            self.file_var = open(f"Saved/{self.directory_builder.text}/variables.var", "r").read()
             self.variables_list = list(ast.literal_eval(self.file_var)) #convert string of list to a list
             print(type(self.variables_list))
             print(self.variables_list)
@@ -278,10 +315,15 @@ if __name__ == "__main__":
                 self.types_list.append(i[0])
                 self.names_list.append(i[1])
                 self.values_list.append(i[-1])
-            self.update_variables()
+            self.update_variables()     
+          
         except Exception: 
             traceback.print_exc()
             print("could not load variables")
+        
+        self.load_dialog.dismiss()
+        
+        
 
     def imports(self):
         print("import settings")
@@ -311,6 +353,7 @@ if __name__ == "__main__":
         self.screen = Screen()
 
         self.toolbar = Builder.load_string(toolbar)
+        
 
         self.run_button = MDRectangleFlatButton(text = "Run", 
                                        pos_hint={"center_x": 0.086, "center_y": 0.217},
@@ -377,9 +420,10 @@ if __name__ == "__main__":
         self.screen.add_widget(self.points_y_builder)
         self.screen.add_widget(self.points_z_builder)
         
-        
         return self.screen
 
 if __name__ == "__main__":
     app = App()
     app.run()
+        
+
