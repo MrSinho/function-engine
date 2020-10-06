@@ -6,9 +6,9 @@ MDTextFieldRect:
     helper_text_mode: "on_focus"
     icon_right: "language-python"
     icon_right_color: app.theme_cls.primary_color
-    pos_hint: {"center_x": 0.30, "center_y":0.765-.1}
+    pos_hint: {"center_x": 0.30, "center_y":0.765-.05}
     size_hint_x: .55
-    size_hint_y: .22
+    size_hint_y: .27
     width: 300    
     '''
 
@@ -22,7 +22,7 @@ MDTextFieldRect:
     icon_right_color: app.theme_cls.primary_color
     pos_hint: {"center_x": 0.30, "center_y":0.535-.1}
     size_hint_x: .55
-    size_hint_y: .22
+    size_hint_y: .27
     width: 300
     '''
 
@@ -33,7 +33,7 @@ MDTextField:
     helper_text_mode: "on_focus"
     #icon_right: "language-python"
     #icon_right_color: app.theme_cls.primary_color
-    pos_hint: {"center_x": .9, "center_y":0.65-.1}
+    pos_hint: {"center_x": .9, "center_y":0.55+.025}
     size_hint_x: 0.13
     width: 50   
     '''
@@ -43,7 +43,7 @@ MDTextField:
     hint_text: ""
     icon_right: "axis-x-arrow"
     icon_right_color: app.theme_cls.primary_color
-    pos_hint: {"center_x": .35, "center_y":0.31-.1}
+    pos_hint: {"center_x": .35-.02, "center_y":0.31-.1}
     size_hint_x: 0.08
     width: 300
 '''
@@ -53,7 +53,7 @@ MDTextField:
     hint_text: ""
     icon_right: "axis-y-arrow"
     icon_right_color: app.theme_cls.primary_color
-    pos_hint: {"center_x": 0.45, "center_y":0.31-.1}
+    pos_hint: {"center_x": 0.45-.02, "center_y":0.31-.1}
     size_hint_x: 0.08
     width: 300
 '''
@@ -62,7 +62,7 @@ MDTextField:
     hint_text: ""
     icon_right: "axis-z-arrow"
     icon_right_color: app.theme_cls.primary_color
-    pos_hint: {"center_x": 0.55, "center_y":0.31-.1}
+    pos_hint: {"center_x": 0.55-.02, "center_y":0.31-.1}
     size_hint_x: 0.08
     width: 300
 '''
@@ -74,7 +74,7 @@ MDCheckbox:
     active: app.edges
     on_active:
         app.draw_edges()
-    pos_hint: {"center_x": 0.2, "center_y":0.31-.1}
+    pos_hint: {"center_x": 0.2-.02, "center_y":0.31-.1}
 
 '''
 
@@ -85,7 +85,7 @@ MDCheckbox:
     active: app.points
     on_active:
         app.draw_points()
-    pos_hint: {"center_x": 0.25, "center_y":0.31-.1}
+    pos_hint: {"center_x": 0.25-.02, "center_y":0.31-.1}
 '''
 
 toolbar = '''
