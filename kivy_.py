@@ -94,14 +94,16 @@ Screen:
         orientation: 'vertical'
         MDToolbar:
             title: 'Demo Application'
-            left_action_items: [["content-save-all", lambda x: app.save()], ["folder", lambda x: app.load()], ["application-import", lambda x: app.imports()]]
+            left_action_items: [["content-save-all", lambda x: app.save_popup()], ["folder", lambda x: app.load_popup()], ["application-import", lambda x: app.imports()]]
             elevation:5
 '''
 
-#toolbar = '''
-#
-#MDToolbar:
-#    title: ''
-#    left_action_items: [["content-save-all", lambda x: app.save()], ["folder", lambda x: app.load()], ["application-import", lambda x: app.imports()]]
-#    pos_hint_y: 0.9
-#'''
+directory_helper = '''
+MDTextField:
+    hint_text: "Directory"
+    #helper_text: "Directory: "
+    helper_text_mode: "on_focus"
+    icon_right: "folder"
+    icon_right_color: app.theme_cls.primary_color
+    pos_hint: {"center_x":0.5, "center_y":0.5} 
+    '''
