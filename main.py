@@ -7,7 +7,7 @@ import re
 import ast
 import concurrent.futures
 import traceback
-import os
+import os, shutil
 
 from kivymd.app import MDApp
 from kivy.core.window import Window
@@ -146,7 +146,7 @@ if __name__ == "__main__":
             i += 1
         var_lines = (str(var_lines)).replace("'", "").replace("[", "").replace("]", "")
         print(var_lines)
-        self.dinamic_table = 'self.var_table = MDDataTable(check = True, pos_hint={"center_x":0.7, "center_y":0.55}, rows_num = 20, size_hint=(0.2,0.5), column_data=[("Name", dp(30)), ("Type", dp(15)),("Value", dp(15))], row_data=['+var_lines+'])'
+        self.dinamic_table = 'self.var_table = MDDataTable(pos_hint={"center_x":0.7, "center_y":0.55}, rows_num = 20, size_hint=(0.2,0.5), column_data=[("Name", dp(15)), ("Type", dp(15)),("Value", dp(15))], row_data=['+var_lines+'])'
         #print(self.dinamic_table)
         self.screen.remove_widget(self.var_table)
         exec(self.dinamic_table)
@@ -183,7 +183,7 @@ if __name__ == "__main__":
     def add_variable(self, obj):
         if self.can_add_var:
             self.variable_builder = Builder.load_string(variable_helper)
-            self.confirm_button = MDRectangleFlatButton(text = "Add", pos_hint={"center_x":0.9,"center_y":0.47},
+            self.confirm_button = MDRectangleFlatButton(text = "Add", pos_hint={"center_x":0.9,"center_y":0.47+.025},
                                                    on_release=self.confirm_variable)
             self.can_add_var = False
             self.screen.add_widget(self.variable_builder)
@@ -230,6 +230,7 @@ if __name__ == "__main__":
 
     def save(self, obj):
         try:
+            if os.path.exists(f"Saved/{self.directory_builder.text}"): shutil.rmtree(f"Saved/{self.directory_builder.text}")
             os.makedirs(f"Saved/{self.directory_builder.text}")
 
             saved_start = open(f"Saved/{self.directory_builder.text}/start.start", "w")
@@ -249,7 +250,7 @@ if __name__ == "__main__":
 
             print("File has been saved successfully")
             self.save_dialog.dismiss()
-        except Exception: 
+        except Exception:
             traceback.print_exc()
             print("could not save")
         
@@ -316,13 +317,11 @@ if __name__ == "__main__":
                 self.names_list.append(i[1])
                 self.values_list.append(i[-1])
             self.update_variables()     
+            self.load_dialog.dismiss()
           
         except Exception: 
             traceback.print_exc()
-            print("could not load variables")
-        
-        self.load_dialog.dismiss()
-        
+            print("could not load variables") 
         
 
     def imports(self):
@@ -356,7 +355,7 @@ if __name__ == "__main__":
         
 
         self.run_button = MDRectangleFlatButton(text = "Run", 
-                                       pos_hint={"center_x": 0.086, "center_y": 0.217},
+                                       pos_hint={"center_x": 0.086-.025, "center_y": 0.217},
                                        on_release = self.call_exec_algorithm)
         #self.save_button = MDRectangleFlatButton(text = "Save", 
         #                               pos_hint={"center_x": 0.086, "center_y": 0.317},
@@ -365,17 +364,17 @@ if __name__ == "__main__":
         #                               pos_hint={"center_x": 0.086, "center_y": 0.317},
         #                               on_release = self.call_exec_algorithm)
 
-        self.add_var_button = MDIconButton(icon = "plus", pos_hint={"center_x":0.882, "center_y": 0.61},
+        self.add_var_button = MDIconButton(icon = "plus", pos_hint={"center_x":0.882, "center_y": 0.61+.025},
                                       on_release = self.add_variable)
 
-        self.remv_var_button = MDIconButton(icon = "minus", pos_hint={"center_x":0.912, "center_y":0.61}) 
+        self.remv_var_button = MDIconButton(icon = "minus", pos_hint={"center_x":0.912, "center_y":0.61+.025}) 
             
-        self.var_table = MDDataTable(check = True,
-                                pos_hint={"center_x":0.7, "center_y":0.55},
-                                rows_num = 20,
-                                size_hint=(.2,0.5),
+        self.var_table = MDDataTable(#check = True,
+                                pos_hint={"center_x":0.7, "center_y":0.575},
+                                rows_num = 10,
+                                size_hint=(.2,0.55),
                                 column_data=[
-                                ("Name", dp(30)), 
+                                ("Name", dp(15)), 
                                 ("Type", dp(15)), 
                                 ("Value", dp(15)), 
         ],
