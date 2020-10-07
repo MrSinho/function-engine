@@ -2,19 +2,13 @@ import numpy as np
 import pyqtgraph as pg
 from pyqtgraph.Qt import QtCore, QtGui
 import pyqtgraph.opengl as gl
-import sys 
-import re
-import ast
-import concurrent.futures
-import traceback
-import os, shutil
+import sys, re, ast, os, shutil, concurrent.futures, traceback
 
 from kivymd.app import MDApp
 from kivy.core.window import Window
 from kivymd.uix.label import MDLabel, MDIcon
 from kivymd.uix.screen import Screen
 from kivymd.uix.button import MDRectangleFlatButton, MDIconButton, MDFloatingActionButton
-
 from kivymd.uix.textfield import MDTextField, MDTextFieldRect, MDTextFieldRound
 from kivy.lang import Builder
 from kivy_ import *
@@ -99,9 +93,8 @@ if __name__ == "__main__":
         try:
             print(self.entire_class)
             #Clock.schedule_interval(self.execute_class, 0.1)
-            exec(self.entire_class)
             App().stop()
-            App().run()
+            exec(self.entire_class)
         except Exception: traceback.print_exc()
         #exec(self.entire_class)
     
@@ -117,24 +110,65 @@ if __name__ == "__main__":
         try: 
             self.variable = self.variable_builder.text.split()
             print(self.variable)
-            try: float(self.variable[-1])
-            except Exception: 
-                print("Invalid sintax!!")
-                self.update_all_widgets()
-                return
-            if(self.variable[0].isalpha() and self.variable[1].isalpha()): #(self.variable[-1].isalpha() or self.variable[-1].isdigit())):
-                self.variables_list.append(self.variable_builder.text)
-                print(self.variables_list)
-                self.types_list.append(self.variable[0])
-                print(self.types_list)
-                self.names_list.append(self.variable[1])
-                self.values_list.append(self.variable[-1])
-                self.update_variables()
-            else: 
-                print("Invalid sintax!!")
-                self.update_all_widgets()
-                return
-        except Exception: traceback.print_exc()
+            if(self.variable[0] == "remove"):
+                    try:
+                        i=0
+                        for _ in self.names_list: 
+                            if _ == self.variable[1]: 
+                                self.types_list.pop(i)
+                                self.names_list.pop(i)
+                                self.values_list.pop(i)
+                                self.variables_list.pop(i)
+                                print(self.types_list, self.names_list, self.values_list)
+                            i+=1
+                        self.update_variables()
+                        print("variable has been removed")
+                    except Exception: 
+                        traceback.print_exc()
+                        print("cannot remove variable")
+                        self.update_all_widgets()
+            
+            elif((self.variable[0] == "rename") or (self.variable[0] == "type") or (self.variable[0] == "value")):
+                try:
+                    i = 0
+                    for _ in self.names_list: 
+                        if _ == self.variable[1]:
+                            if self.variable[0]   == "rename": self.names_list[i]  = self.variable[-1]
+                            elif self.variable[0] == "type"  : self.types_list[i]  = self.variable[-1]
+                            elif self.variable[0] == "value" : self.values_list[i] = self.variable[-1]
+                        i+=1
+                    print (self.variables_list)
+                    self.update_variables()
+                    print("variable has been updated")
+                except Exception: 
+                    traceback.print_exc()
+                    print("cannot update variable")
+                    self.update_all_widgets()
+
+            else:
+                try: float(self.variable[-1])
+                except Exception: 
+                    traceback.print_exc()
+                    print("Invalid syntax!")
+                    self.update_all_widgets()
+                if(self.variable[0].isalpha() and self.variable[1].isalpha()): #(self.variable[-1].isalpha() or self.variable[-1].isdigit())):
+                    #if(self.variable[0] == "rename"):
+                    #    try:
+                    #    except Exception: print("cannot rename variable")
+                    self.variables_list.append(self.variable_builder.text)
+                    print(self.variables_list)
+                    self.types_list.append(self.variable[0])
+                    print(self.types_list)
+                    self.names_list.append(self.variable[1])
+                    self.values_list.append(self.variable[-1])
+                    self.update_variables()
+                else: 
+                    print("Invalid syntax!!")
+                    self.update_all_widgets()
+                    return
+        except Exception: 
+            traceback.print_exc()
+            print("Invalid syntax!")
 
     def update_variables(self):
         i = 0
@@ -146,7 +180,7 @@ if __name__ == "__main__":
             i += 1
         var_lines = (str(var_lines)).replace("'", "").replace("[", "").replace("]", "")
         print(var_lines)
-        self.dinamic_table = 'self.var_table = MDDataTable(pos_hint={"center_x":0.7, "center_y":0.55}, rows_num = 20, size_hint=(0.2,0.5), column_data=[("Name", dp(15)), ("Type", dp(15)),("Value", dp(15))], row_data=['+var_lines+'])'
+        self.dinamic_table = 'self.var_table = MDDataTable(pos_hint={"center_x":0.7, "center_y":0.575}, rows_num = 20, size_hint=(0.2,0.55), column_data=[("Name", dp(15)), ("Type", dp(15)),("Value", dp(15))], row_data=['+var_lines+'])'
         #print(self.dinamic_table)
         self.screen.remove_widget(self.var_table)
         exec(self.dinamic_table)
@@ -162,7 +196,7 @@ if __name__ == "__main__":
         self.screen.remove_widget(self.algorithm_builder)
         self.screen.remove_widget(self.run_button)
         self.screen.remove_widget(self.add_var_button)
-        self.screen.remove_widget(self.remv_var_button)
+        #self.screen.remove_widget(self.remv_var_button)
         self.screen.remove_widget(self.start_builder)
         self.screen.remove_widget(self.points_x_builder)
         self.screen.remove_widget(self.points_y_builder)
@@ -174,7 +208,7 @@ if __name__ == "__main__":
         self.screen.add_widget(self.start_builder)
         self.screen.add_widget(self.run_button)
         self.screen.add_widget(self.add_var_button)
-        self.screen.add_widget(self.remv_var_button)
+        #self.screen.add_widget(self.remv_var_button)
         self.screen.add_widget(self.points_x_builder)
         self.screen.add_widget(self.points_y_builder)
         self.screen.add_widget(self.points_z_builder)
@@ -364,10 +398,10 @@ if __name__ == "__main__":
         #                               pos_hint={"center_x": 0.086, "center_y": 0.317},
         #                               on_release = self.call_exec_algorithm)
 
-        self.add_var_button = MDIconButton(icon = "plus", pos_hint={"center_x":0.882, "center_y": 0.61+.025},
+        self.add_var_button = MDIconButton(icon = "plus", pos_hint={"center_x":0.9, "center_y": 0.61+.025},
                                       on_release = self.add_variable)
 
-        self.remv_var_button = MDIconButton(icon = "minus", pos_hint={"center_x":0.912, "center_y":0.61+.025}) 
+        #self.remv_var_button = MDIconButton(icon = "minus", pos_hint={"center_x":0.912, "center_y":0.61+.025}) 
             
         self.var_table = MDDataTable(#check = True,
                                 pos_hint={"center_x":0.7, "center_y":0.575},
@@ -413,7 +447,7 @@ if __name__ == "__main__":
         #plus_button
         self.screen.add_widget(self.add_var_button)
         #minus_button
-        self.screen.add_widget(self.remv_var_button)
+        #self.screen.add_widget(self.remv_var_button)
         #points_input
         self.screen.add_widget(self.points_x_builder)
         self.screen.add_widget(self.points_y_builder)
@@ -421,8 +455,9 @@ if __name__ == "__main__":
         
         return self.screen
 
-if __name__ == "__main__":
-    app = App()
-    app.run()
+while True:
+    if __name__ == "__main__":
+        app = App()
+        app.run()
         
 
