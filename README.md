@@ -31,6 +31,10 @@ We have to specify which variables will represent which axis: for now the ```x``
 
 ![](Images/axis.PNG)
 
+The last thing we need to do is choosing what we want to see in the three-dimensional graph: some lines, or some dots? Let's select the first option for drawing lines.
+
+![](Images/checkbox.PNG)
+
 Before running, let's save all what we've done: click on the save icon of the toolbar, then give a name to the code:
 
 ![](Images/save_as.PNG)
@@ -38,7 +42,7 @@ Before running, let's save all what we've done: click on the save icon of the to
 
 ## Load some examples
 
-We want to load some saved example, so we're going to click the ```folder icon``` in the toolbar. You'll see a popup window, write ```Lorenz Attractor``` in the input field.
+We want to load a saved example, so we're going to click the ```folder icon``` in the toolbar. You'll see a popup window, write ```Lorenz Attractor``` in the input field.
 Now we have loaded the ```Lorenz Attractor``` equation.
 
 ![](Images/load_example.PNG)
