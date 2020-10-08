@@ -1,4 +1,4 @@
-# Algorithm_Engine
+# Equation Engine
 
 ## Setup
 Let's begin with cloning this repository:
