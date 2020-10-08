@@ -13,6 +13,8 @@ Example:
 - We also need to change the value to bool: ```type y bool```
 - The initial value is too small, we want something bigger: ```value y 9.8```
 
+![](Images/add_variable.PNG)
+
 ## Load some examples
 
 We want just to load some saved example, so we're going to click the ```folder icon``` in the toolbar. You'll see a popup window, write ```Lorenz Attractor``` in the input field.
