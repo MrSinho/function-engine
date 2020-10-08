@@ -17,8 +17,7 @@ Example:
 
 ![](Images/add_variable.PNG)
 
-## First equation
-Let's write our first equation: first, we need to add some variables, click on the ```plus``` icon, and write ```float x = 0```, ```float y = 0```, ```float k = 9.8```
+Let's write our first equation: first, we need to add more variables, click on the ```plus``` icon, and write ```float x = 0```, ```float y = 0```.
 
 ![](Images/first_var.PNG)
 
