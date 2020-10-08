@@ -87,14 +87,13 @@ class Simulation(object):
         timer.start(10)
         self.start()
 
-app.stop()
 {str(self.call)}
 app.run()
 """
         try:
             print(self.entire_class)
             #Clock.schedule_interval(self.execute_class, 0.1)
-            App().stop()
+            #App().stop()
             exec(self.entire_class)
             app.run()
         except Exception: traceback.print_exc()
