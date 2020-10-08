@@ -2,7 +2,7 @@
 
 ## Setup
 Let's begin with cloning this repository:
-```python git clone https://github.com/MrSinho/Algorithm_Engine```
+```git clone https://github.com/MrSinho/Algorithm_Engine```
 Now run the ```main.py```, you'll see something like this: 
 
 ![](Images/empty_window.PNG)
@@ -17,6 +17,7 @@ Example:
 
 ![](Images/add_variable.PNG)
 
+## First equation
 Let's write our first equation: first, we need to add some variables, click on the ```plus``` icon, and write ```float x = 0```, ```float y = 0```, ```float k = 9.8```
 
 ![](Images/first_var.PNG)
@@ -27,6 +28,10 @@ In the ```Update``` function we'll write the simple formula, where: ```y = k*x2`
 self.y = self.k*np.power(self.x, 2)
 self.x += 0.1
 ```
+We have to specify which variables will represent which axis: for now the ```x``` will represent the ```x axis```, the ```y``` for the ```y axis``` and the ```z``` for the ```z axis```.
+
+![](Images/axis.PNG)
+
 Before running, let's save all what we've done: click on the save icon of the toolbar, then give a name to the code:
 
 ![](Images/save_as.PNG)
