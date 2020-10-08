@@ -3,7 +3,9 @@
 ## Setup
 Let's begin with cloning this repository:
 ```python git clone https://github.com/MrSinho/Algorithm_Engine```
-Now run the ```main.py```, you'll see something like this: ![](Images/empty_window.PNG)
+Now run the ```main.py```, you'll see something like this: 
+
+![](Images/empty_window.PNG)
 
 ## Overview
 In the ```Start``` function you have to write some basic code which will run just at the beginning of the script, the ```Update``` function runs/is updated every time your machine makes a new frame. On the left you have the ```variables``` data table, which contains the variables you're going to use. If you click the plus icon, you can add, rename, and change the type and value of a variable. 
@@ -26,6 +28,7 @@ self.y = self.k*np.power(self.x, 2)
 self.x += 0.1
 ```
 Before running, let's save all what we've done: click on the save icon of the toolbar, then give a name to the code:
+
 ![](Images/save_as.PNG)
 
 
@@ -35,6 +38,7 @@ We want to load some saved example, so we're going to click the ```folder icon``
 Now we have loaded the ```Lorenz Attractor``` equation.
 
 ![](Images/load_example.PNG)
+
 We have to specify which variables will represent which axis: for now the ```x``` will represent the ```x axis```, the ```y``` for the ```y axis``` and the ```z``` for the ```z axis```.
 
 ![](Images/axis.PNG)
