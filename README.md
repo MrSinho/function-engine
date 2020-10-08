@@ -22,7 +22,7 @@ Let's write our first equation: first, we need to add more variables, click on t
 ![](Images/first_var.PNG)
 
 In the ```Start``` function we'll print the name of the equation: ```print("Quadratic Proportionality")```. 
-In the ```Update``` function we'll write the simple formula, where: ```y = k*x2```. We can't do this, becuase we're writing inside a class, and to power the ```x``` we'll use the ```power```funtion from ```numpy``` so it's going to be: ```python self.y = self.k*np.power(self.x, 2)```. We'll also make the independent variable ```x``` increase by a small number. So this is the final result:
+In the ```Update``` function we'll write the simple formula, where: ```y = k*x2```. We can't do this, because we're writing inside a class, and to power the ```x``` we'll use the ```power```funtion from ```numpy``` so it's going to be: ```self.y = self.k*np.power(self.x, 2)```. We'll also make the independent variable ```x``` increase by a small number. So this is the final result:
 ```python
 self.y = self.k*np.power(self.x, 2)
 self.x += 0.1
