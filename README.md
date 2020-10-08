@@ -61,3 +61,7 @@ Run the attractor by clicking ```Run```.
 As you can see, it's working!
 
 ![](Images/lorenz_attractor.PNG)
+
+You can do same process with some more examples, such as the ```Thomas Attractor```, and the ```Logistic Map```. You can also write, save, and load your equation.
+
+Made by Sinho Graphics
