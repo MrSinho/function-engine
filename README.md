@@ -25,6 +25,8 @@ In the ```Update``` function we'll write the simple formula, where: ```y = k*x2`
 self.y = self.k*np.power(self.x, 2)
 self.x += 0.1
 ```
+Before running, let's save all what we've done: click on the save icon of the toolbar, then give a name to the code:
+![](Images/save_as.PNG)
 
 
 ## Load some examples
