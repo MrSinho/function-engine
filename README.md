@@ -10,9 +10,9 @@ Now run the ```main.py```, you'll see something like this:
 ## Overview
 In the ```Start``` function you have to write some basic code which will run just at the beginning of the script, the ```Update``` function runs/is updated every time your machine makes a new frame. On the left you have the ```variables``` data table, which contains the variables you're going to use. If you click the plus icon, you can add, rename, and change the type and value of a variable. 
 Example: 
-- We want to add a variable x, we need to give the ```type``` ```name``` and ```initial value```: ```float x = 0```
+- We want to add a variable x, we need to give the ```type``` ```name``` and ```initial value```: ```int x = 0```
 - Now let's rename it to y: ```rename x y```
-- We also need to change the value to bool: ```type y bool```
+- We also need to change the value to float: ```type y float```
 - The initial value is too small, we want something bigger: ```value y 9.8```
 
 ![](Images/add_variable.PNG)
@@ -21,8 +21,8 @@ Let's write our first equation: first, we need to add some variables, click on t
 
 ![](Images/first_var.PNG)
 
-In the ```Start``` function we'll print the name of the equation: ```print("Quadratic Proportionality")```. Easy.
-In the ```Update``` function we'll write the simple formula, where: ```y = k*x2```. We can't write this, becuase we're writing inside a class, and to power the ```x``` we'll use the ```power```funtion from ```numpy``` so it's going to be: ```python self.y = self.k*np.power(self.x, 2)```. We'll also make the independent variable ```x``` increase by a small number. So this is the final result:
+In the ```Start``` function we'll print the name of the equation: ```print("Quadratic Proportionality")```. 
+In the ```Update``` function we'll write the simple formula, where: ```y = k*x2```. We can't do this, becuase we're writing inside a class, and to power the ```x``` we'll use the ```power```funtion from ```numpy``` so it's going to be: ```python self.y = self.k*np.power(self.x, 2)```. We'll also make the independent variable ```x``` increase by a small number. So this is the final result:
 ```python
 self.y = self.k*np.power(self.x, 2)
 self.x += 0.1
