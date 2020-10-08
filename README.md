@@ -27,4 +27,5 @@ The last thing we need to do is choosing what we want to see in the three-dimens
 Run the attractor by clicking ```Run```.
 
 As you can see, it's working!
+
 ![](Images/lorenz_attractor.PNG)
