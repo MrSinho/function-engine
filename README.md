@@ -39,6 +39,7 @@ Before running, let's save all what we've done: click on the save icon of the to
 
 ![](Images/save_as.PNG)
 
+Now execute the code by clicking the ```Run``` button.
 
 ## Load some examples
 
