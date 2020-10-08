@@ -11,9 +11,9 @@ Now run the ```main.py```, you'll see something like this:
 In the ```Start``` function you have to write some basic code which will run just at the beginning of the script, the ```Update``` function runs/is updated every time your machine makes a new frame. On the left you have the ```variables``` data table, which contains the variables you're going to use. If you click the plus icon, you can add, rename, and change the type and value of a variable. 
 Example: 
 - We want to add a variable x, we need to give the ```type``` ```name``` and ```initial value```: ```int x = 0```
-- Now let's rename it to y: ```rename x y```
-- We also need to change the value to float: ```type y float```
-- The initial value is too small, we want something bigger: ```value y 9.8```
+- Now let's rename it to y: ```rename x k```
+- We also need to change the value to float: ```type k float```
+- The initial value is too small, we want something bigger: ```value k 9.8```
 
 ![](Images/add_variable.PNG)
 
