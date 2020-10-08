@@ -15,6 +15,17 @@ Example:
 
 ![](Images/add_variable.PNG)
 
+Let's write our first equation: first, we need to add some variables, click on the ```plus``` icon, and write ```float x = 0```, ```float y = 0```, ```float k = 9.8```
+
+![](Images/first_var.PNG)
+
+In the ```Start``` function we'll just print the name of the equation: ```print("Quadratic Proportionality")```. Easy.
+In the ```Update``` function we'll write just the simple formula, where: ```y = k*x2```. We can't write this, becuase we're writing inside a class, and to power the ```x``` we'll use the ```power```funtion from ```numpy``` so it's going to be: ```self.y = self.k*np.power(self.x, 2)```. We'll also make the independent variable ```x``` increase by a small number. So this is the ```Update```function:
+```self.y = self.k*np.power(self.x, 2)
+self.x += 0.1
+```
+
+
 ## Load some examples
 
 We want just to load some saved example, so we're going to click the ```folder icon``` in the toolbar. You'll see a popup window, write ```Lorenz Attractor``` in the input field.
