@@ -19,7 +19,7 @@ Example:
 
 Let's write our first equation: first, we need to add more variables, click on the ```plus``` icon, and write ```float y = 1```, ```float z = 0```.
 
-![](Images/first_var.PNG)
+![](Images/var_table.PNG)
 
 In the ```Start``` function we'll print the name of the equation, just for fun: ```print("Example")```. 
 In the ```Update``` function we'll make x becomes first negative, then positive, and so on... ```self.x *= -1```, and y will slowly increase by 1 ```self.y += 1``` So this is the final result:
