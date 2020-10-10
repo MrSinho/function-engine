@@ -55,26 +55,14 @@ This is the final result:
 ![](Images/example_sim.PNG)
 
 ## Load some examples
-
-We want to load a saved example, so we're going to click the ```folder icon``` in the toolbar. You'll see a popup window, write ```Lorenz Attractor``` in the input field.
-Now we have loaded the ```Lorenz Attractor``` equation.
+You load (by clicking the folder icon on the toolbar) more examples, such as the ```Lorenz Attractor```, the ```Thomas Attractor```, and the ```Logistic Map```, which are on this repository by default. You can also write, save, and load your equations.
 
 ![](Images/load_example.PNG)
 
-We have to specify which variables will represent which axis: for now the ```x``` will represent the ```x axis```, the ```y``` for the ```y axis``` and the ```z``` for the ```z axis```.
+![](Images/thomas.PNG)
 
-![](Images/axis.PNG)
+![](Images/Lorenz2.PNG)
 
-The last thing we need to do is choosing what we want to see in the three-dimensional graph: some lines, or some dots? Let's select the first option for drawing lines.
+![](Images/thomas5.PNG)
 
-![](Images/checkbox.PNG)
-
-Run the attractor by clicking ```Run```.
-
-As you can see, it's working!
-
-![](Images/lorenz_attractor.PNG)
-
-You can do same process with some more examples, such as the ```Thomas Attractor```, and the ```Logistic Map```. You can also write, save, and load your equation.
-
-Made by Sinho Graphics
+Made by [Sinho Graphics](https://www.instagram.com/sinho_graphics)
