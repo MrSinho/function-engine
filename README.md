@@ -50,7 +50,7 @@ If you go up you'll see there are some more required field: the one on the upper
 
 ![](Images/window_setup.PNG)
 
-Before running, let's save all what we've done: click on the save icon of the toolbar (down left corner), then give a name to the code:
+Before running, let's save what we've done: click on the save icon of the toolbar (down left corner), then give a name to the code:
 
 ![](Images/save_as.PNG)
 
