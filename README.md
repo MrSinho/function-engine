@@ -52,7 +52,7 @@ If you go up you'll see there are some more required field: the one on the upper
 
 Before running, let's save what we've done: click on the save icon of the toolbar (down left corner), then give a name to the code:
 
-![](Images/save_as.PNG)
+![](Images/save.PNG)
 
 Now execute the code by clicking the ```Run``` button.
 
