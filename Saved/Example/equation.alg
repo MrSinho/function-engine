@@ -1,3 +1,3 @@
-self.x = 34+self.y
-self.z += self.x-self.z
-self.y = self.x*self.z
+self.x *= -1
+self.y += 1 
+

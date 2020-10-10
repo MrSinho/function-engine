@@ -137,6 +137,8 @@ app.run()
                             if self.variable[0]   == "rename": self.names_list[i]  = self.variable[-1]
                             elif self.variable[0] == "type"  : self.types_list[i]  = self.variable[-1]
                             elif self.variable[0] == "value" : self.values_list[i] = self.variable[-1]
+                            self.variables_list[i] = f"{self.types_list[i]} {self.names_list[i]} {self.values_list[i]}"
+                            
                         i+=1
                     print (self.variables_list)
                     self.update_variables()
@@ -233,13 +235,11 @@ app.run()
         self.update_checkbox()
 
     def add_variable(self, obj):
-        if self.can_add_var:
-            self.variable_builder = Builder.load_string(variable_helper)
-            self.confirm_button = MDRectangleFlatButton(text = "Add", pos_hint={"center_x":0.9,"center_y":0.47+.025},
-                                                   on_release=self.confirm_variable)
-            self.can_add_var = False
-            self.screen.add_widget(self.variable_builder)
-            self.screen.add_widget(self.confirm_button)
+        self.variable_builder = Builder.load_string(variable_helper)
+        self.confirm_button = MDRectangleFlatButton(text = "Add", pos_hint={"center_x":0.9,"center_y":0.47+.025},
+                                               on_release=self.confirm_variable)
+        self.screen.add_widget(self.variable_builder)
+        self.screen.add_widget(self.confirm_button)
     
     def add_check_press(self, instance_table, instance_row):
         if(self.can_remv_var == False):
@@ -304,6 +304,7 @@ app.run()
             saved_variables.write(str(self.variables_list))
             saved_variables.flush()
             saved_variables.close()
+            print(self.variables_list)
 
             saved_axes = open(f"{os.path.dirname(os.path.realpath(sys.argv[0]))}\\Saved\\{self.directory_builder.text}\\axes.axes", "w")
             saved_axes.write(f"{self.points_x_builder.text} {self.points_y_builder.text} {self.points_z_builder.text} {self.framerate_builder.text}")
@@ -393,7 +394,7 @@ app.run()
                 self.values_list.append(i[-1])
             self.call = f"Simulation({str([str(value) for value in self.values_list])}, {str(self.how)}).animation()".replace("[", "").replace("]", "").replace("'", "")
             self._class = f"self, {str([str(name) for name in self.names_list])}, how".replace("[", "").replace("]", "").replace("'", "")
-            self.update_variables()     
+            self.update_variables()
             self.load_dialog.dismiss() 
         except Exception: 
             traceback.print_exc()
@@ -421,8 +422,6 @@ app.run()
     def build(self):
         self.how = "2"
 
-        self.can_add_var = True
-        self.can_remv_var = False
         self.edges = True
         self.points = False
         self.file_eq = ""
