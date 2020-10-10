@@ -35,7 +35,7 @@ You'll also notice an input field with a clock icon on the right: this represent
 
 ![](Images/axes_update.PNG)
 
-The last thing we need to do is choosing what we want to see in the three-dimensional graph: some lines, or some dots? Let's select the first option for drawing lines.
+We also have to choose what to see in the three-dimensional graph: some lines, or some dots? Let's select the first option for drawing lines. Note: the dots option is not fully optimized.
 
 ![](Images/checkbox.PNG)
 
