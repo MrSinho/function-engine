@@ -40,7 +40,8 @@ MDTextField:
 
 point_x_helper = '''
 MDTextField:
-    hint_text: ""
+    helper_text: "X axis variable"
+    helper_text_mode: "on_focus"
     icon_right: "axis-x-arrow"
     icon_right_color: app.theme_cls.primary_color
     pos_hint: {"center_x": .35-.02, "center_y":0.31-.1}
@@ -50,7 +51,8 @@ MDTextField:
 
 point_y_helper = '''
 MDTextField:
-    hint_text: ""
+    helper_text: "Y axis variable"
+    helper_text_mode: "on_focus"
     icon_right: "axis-y-arrow"
     icon_right_color: app.theme_cls.primary_color
     pos_hint: {"center_x": 0.45-.02, "center_y":0.31-.1}
@@ -59,7 +61,8 @@ MDTextField:
 '''
 point_z_helper = '''
 MDTextField:
-    hint_text: ""
+    helper_text: "Z axis variable"
+    helper_text_mode: "on_focus"
     icon_right: "axis-z-arrow"
     icon_right_color: app.theme_cls.primary_color
     pos_hint: {"center_x": 0.55-.02, "center_y":0.31-.1}
@@ -93,8 +96,8 @@ Screen:
     BoxLayout:
         orientation: 'vertical'
         MDToolbar:
-            title: 'Demo Application'
-            left_action_items: [["content-save-all", lambda x: app.save_popup()], ["folder", lambda x: app.load_popup()], ["application-import", lambda x: app.imports()]]
+            title: 'Development Build'
+            left_action_items: [["content-save-all", lambda x: app.save_popup()], ["folder", lambda x: app.load_popup()]]
             elevation:5
 '''
 
@@ -107,3 +110,59 @@ MDTextField:
     icon_right_color: app.theme_cls.primary_color
     pos_hint: {"center_x":0.5, "center_y":0.5} 
     '''
+
+import_helper = '''
+MDTextField:
+    hint_text: "Directory"
+    #helper_text: "Directory: "
+    helper_text_mode: "on_focus"
+    icon_right: "folder"
+    icon_right_color: app.theme_cls.primary_color
+    pos_hint: {"center_x":0.5, "center_y":0.5} 
+    '''
+
+framerate_helper = '''
+MDTextField:
+    #hint_text: "Frame delay in milliseconds"
+    helper_text: "Frame delay in milliseconds"
+    helper_text_mode: "on_focus"
+    icon_right: "clock-outline"
+    icon_right_color: app.theme_cls.primary_color
+    pos_hint: {"center_x": 0.7-.05, "center_y":0.31-.1}
+    size_hint_x: 0.08
+    width: 300
+'''
+
+title_helper = '''
+MDTextField:
+    hint_text: "Title"
+    #helper_text: "this field is required"
+    #helper_text_mode: "on_focus"
+    pos_hint: {"center_x": 0.166-.025, "center_y":0.965-.05}
+    size_hint_x: 0.23
+    width: 400
+'''
+
+window_x_helper = '''
+MDTextField: 
+    #hint_text:"Width"
+    helper_text: "Window width"
+    helper_text_mode: "on_focus"
+    icon_right: "arrow-right"
+    icon_right_color: app.theme_cls.primary_color
+    pos_hint: {"center_x": 0.456-.025, "center_y":0.965-.05}
+    size_hint_x: 0.08
+    width: 300
+'''
+
+window_y_helper = '''
+MDTextField: 
+    #hint_text:"Height"
+    helper_text: "Window height"
+    helper_text_mode: "on_focus"
+    icon_right: "arrow-up"
+    icon_right_color: app.theme_cls.primary_color
+    pos_hint: {"center_x": 0.556-.025, "center_y":0.965-.05}
+    size_hint_x: 0.08
+    width: 300
+'''
