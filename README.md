@@ -3,7 +3,7 @@ Why this? This can be useful on many fields: you can use it to verify or make so
 
 ## Setup
 Let's begin with cloning this repository:
-```git clone https://github.com/MrSinho/Algorithm_Engine```
+```git clone https://github.com/MrSinho/Equation_Engine```
 
 open the terminal with the virtual environment, and type 
 ```python
