@@ -51,6 +51,9 @@ Now execute the code by clicking the ```Run``` button.
 
 ![](Images/window.PNG)
 
+This is the final result:
+![](Images/example_sim.PNG)
+
 ## Load some examples
 
 We want to load a saved example, so we're going to click the ```folder icon``` in the toolbar. You'll see a popup window, write ```Lorenz Attractor``` in the input field.
