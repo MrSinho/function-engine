@@ -3,6 +3,11 @@
 ## Setup
 Let's begin with cloning this repository:
 ```git clone https://github.com/MrSinho/Algorithm_Engine```
+
+open the terminal with the virtual environment, and type 
+```python
+pip install kivy kivymd pyopengl numpy pyqtgraph
+```
 Now run the ```main.py```, you'll see something like this: 
 
 ![](Images/empty_window.PNG)
