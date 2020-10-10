@@ -1,6 +1,6 @@
 # Equation Engine
 ![](Images/preview.PNG)
-Why this? This can be useful on many fields: you can use it to verify or make some physics experiments, with almost no coding knowlege. PyQtGraph (the module that made this repository possible) was born for scientific visualization, and I wanted to do something which does the same job, in an easier way.
+Why this? This can be useful on many fields: you can use it to view and corfirm physics equations or simulate some physics experiments, with almost no coding knowlege. PyQtGraph (the module that made this repository possible) was born for scientific visualization, and I wanted to do something which does the same job, in an easier way.
 
 ## Setup
 Let's begin with cloning this repository:
