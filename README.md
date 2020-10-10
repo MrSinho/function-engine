@@ -15,7 +15,7 @@ Now run the ```main.py```, you'll see something like this:
 ![](Images/empty_window.PNG)
 
 ## Overview
-In the ```Start``` function you have to write some basic code which will run just at the beginning of the script, the ```Update``` function runs/is updated every time your machine makes a new frame. On the left you have the ```variables``` data table, which contains the variables you're going to use. If you click the plus icon, you can add, rename, and change the type and value of a variable. 
+In the ```Start``` function you have to write some basic code which will run just at the beginning of the script, here you can also import custom libraries; the ```Update``` function runs/is updated every time your machine makes a new frame. On the left you have the ```variables``` data table, which contains the variables you're going to use. If you click the plus icon, you can add, rename, and change the type and value of a variable. 
 Example: 
 - We want to add a variable ```var```, we need to give the ```type``` ```name``` and ```initial value```: ```int var = 1```
 - Now let's rename it to k: ```rename var x```
