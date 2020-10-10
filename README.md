@@ -55,7 +55,7 @@ This is the final result:
 ![](Images/example_sim.PNG)
 
 ## Load some examples
-You load (by clicking the folder icon on the toolbar) more examples, such as the ```Lorenz Attractor```, the ```Thomas Attractor```, and the ```Logistic Map```, which are on this repository by default. You can also write, save, and load your equations.
+You can load (by clicking the folder icon on the toolbar) more examples, such as the ```Lorenz Attractor```, the ```Thomas Attractor```, and the ```Logistic Map```, which are on this repository by default. You can also write, save, and load your equations.
 
 ![](Images/load_example.PNG)
 
