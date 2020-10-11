@@ -92,10 +92,7 @@ app.run()
 """
         try:
             print(self.entire_class)
-            #Clock.schedule_interval(self.execute_class, 0.1)
-            #App().stop()
             exec(self.entire_class)
-            app.run()
         except Exception: traceback.print_exc()
         #exec(self.entire_class)
     
@@ -104,7 +101,6 @@ app.run()
     #    except Exception: traceback.print_exc()
 
     def confirm_variable(self, obj):
-        self.can_add_var = True
         self.screen.remove_widget(self.confirm_button)
         self.screen.remove_widget(self.variable_builder)
         self.screen.remove_widget(self.var_table)
@@ -187,7 +183,6 @@ app.run()
         #print(self.dinamic_table)
         self.screen.remove_widget(self.var_table)
         exec(self.dinamic_table)
-        self.var_table.bind(on_check_press = self.add_check_press)
         self.call = f"Simulation({str([str(value) for value in self.values_list])}, {str(self.how)}).animation()".replace("[", "").replace("]", "").replace("'", "")
         self._class = f"self, {str([str(name) for name in self.names_list])}, how".replace("[", "").replace("]", "").replace("'", "")      
         print("variable has been loaded successfully!")  
@@ -240,14 +235,6 @@ app.run()
                                                on_release=self.confirm_variable)
         self.screen.add_widget(self.variable_builder)
         self.screen.add_widget(self.confirm_button)
-    
-    def add_check_press(self, instance_table, instance_row):
-        if(self.can_remv_var == False):
-            self.can_remv_var = True
-            print(instance_row)
-        elif(self.can_remv_var == True):
-            self.can_remv_var = False
-            print("deselected ", str(instance_row))
 
     def draw_edges(self):
         if ((not self.edges) or self.points):
@@ -428,7 +415,7 @@ app.run()
         self.file_start = ""
 
         Window.size=(1400, 700)
-        self.title = "Algorithm Engine"
+        self.title = "Equation Engine"
         self.variables_list = []#"float x = 0.5", "float yy = 3.0", "float z 0", "float c 1", "float y = 0"]
         self.types_list     = []#"float", "float", "float", "float", "float"                               ]
         self.values_list    = []#"0.5", "3.0", "0", "1", "0"                                               ]
