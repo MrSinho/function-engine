@@ -29,7 +29,7 @@ Let's write our first equation: first, we need to add more variables, click on t
 ![](Images/var_table.PNG)
 
 In the ```Start``` function we'll print the name of the equation, just for fun: ```print("Example")```. 
-In the ```Update``` function we'll make x becomes first negative, then positive, and so on... ```self.x *= -1```, and y will slowly increase by 1 ```self.y += 1``` So this is the final result:
+In the ```Update``` function we'll turn x to negative, then to positive, and so on... ```self.x *= -1```, and y will slowly increase by 1 ```self.y += 1``` So this is the final result:
 ```python
 self.x *= -1
 self.y += 1
