@@ -8,7 +8,7 @@ Let's begin with cloning this repository:
 
 open the terminal with the virtual environment, and type 
 ```python
-pip install kivy kivymd pyopengl numpy pyqtgraph
+python -m pip install -r requirements.txt
 ```
 Now run the ```main.py```, you'll see something like this: 
 
