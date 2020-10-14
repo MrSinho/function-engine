@@ -6,7 +6,7 @@ Why this? This can be useful on many fields: you can use it to view and corfirm 
 Let's begin with cloning this repository:
 ```git clone https://github.com/MrSinho/Equation_Engine```
 
-open the terminal with the virtual environment, and type 
+open the terminal with the virtual environment activated, and type 
 ```python
 python -m pip install -r requirements.txt
 ```
