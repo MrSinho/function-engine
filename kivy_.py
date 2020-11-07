@@ -15,7 +15,7 @@ MDTextFieldRect:
 algorithm_helper = '''
 MDTextFieldRect:
     text : str(app.file_eq)
-    hint_text: "Update is called once per frame"
+    hint_text: "Update"
     helper_text: "for some examples: www.sinhographics.com"
     helper_text_mode: "on_focus"
     icon_right: "language-python"
