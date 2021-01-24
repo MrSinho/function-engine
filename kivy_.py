@@ -2,7 +2,6 @@ start_helper = '''
 MDTextFieldRect:
     text : str(app.file_start)
     hint_text: "Start"
-    helper_text: "for some examples: www.sinhographics.com"
     helper_text_mode: "on_focus"
     icon_right: "language-python"
     icon_right_color: app.theme_cls.primary_color
@@ -15,8 +14,7 @@ MDTextFieldRect:
 algorithm_helper = '''
 MDTextFieldRect:
     text : str(app.file_eq)
-    hint_text: "Update"
-    helper_text: "for some examples: www.sinhographics.com"
+    hint_text: "Update "
     helper_text_mode: "on_focus"
     icon_right: "language-python"
     icon_right_color: app.theme_cls.primary_color
