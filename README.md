@@ -72,4 +72,4 @@ You can load (by clicking the folder icon on the toolbar) more examples, such as
 
 ![](Images/thomas5.PNG)
 
-Made by [Sinho Graphics](https://www.instagram.com/sinho_graphics)
+Made by MrSinho
