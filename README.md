@@ -1,10 +1,10 @@
-# Equation Engine
+# Function Engine
 ![](Images/preview.PNG)
-Why this? This can be useful on many fields: you can use it to view and corfirm physics equations or simulate some physics experiments, with almost no coding knowlege. PyQtGraph (the module that made this repository possible) was born for scientific visualization, and I wanted to do something which does the same job, in an easier way.
+Why this? This can be useful on many fields: you can use it to view and confirm physics equations or simulate some physics experiments, with almost no coding knowlege. PyQtGraph (the module that made this repository possible) was born for scientific visualization, and I wanted to do something which does the same job, in an easier way.
 
 ## Setup
 Let's begin with cloning this repository:
-```git clone https://github.com/MrSinho/Equation_Engine```
+```git clone https://github.com/MrSinho/function-engine```
 
 open the terminal with the virtual environment activated, and type 
 ```python
