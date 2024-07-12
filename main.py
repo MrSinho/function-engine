@@ -8,7 +8,7 @@ from kivymd.app import MDApp
 from kivy.core.window import Window
 from kivymd.uix.label import MDLabel, MDIcon
 from kivymd.uix.screen import Screen
-from kivymd.uix.button import MDRectangleFlatButton, MDIconButton, MDFloatingActionButton
+from kivymd.uix.button import MDButton, MDButtonText, MDFloatingActionButton, MDIconButton#, MDRectangleFlatButton 
 from kivymd.uix.textfield import MDTextField, MDTextFieldRect, MDTextFieldRound
 from kivy.lang import Builder
 from kivy_ import *
